@@ -15,12 +15,22 @@ grammar Rows;
 file: (row NL)+;
 
 row
-locals [int ii=0]
+locals [
+    /**
+     * 在RowContext类中创建成员变量
+     */
+    int i=0,
+    /**
+     * 第二个变量
+     */
+    int tt = 2
+]
     : (
         STUFF {
-            $ii++;
-            if($ii == col) {
-                System.out.println($ii+" - "+$STUFF.text);
+            // 得到 STUFF token 的结果
+            $i++;
+            if($i == col) {
+                System.out.println($i+" - "+$STUFF.text);
             }
         }
       )+

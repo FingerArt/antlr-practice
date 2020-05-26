@@ -29,7 +29,7 @@ NUMBER
     ;
 
 TEXT
-    : ~[\r\n," ]+
+    : ~[,\r\n"]+
     ;
 
 INT
@@ -42,8 +42,4 @@ FLOAT
 
 DIGIT
     : [0-9]
-    ;
-
-WS
-    : [ \r\n\t] -> skip
     ;

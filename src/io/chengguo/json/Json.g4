@@ -19,13 +19,13 @@ pair
     ;
 
 value
-    : object
-    | array
-    | BOOLEAN
-    | STRING
-    | NUMBER
-    | DOUBLE
-    | 'null'
+    : object    # ValueObject
+    | array     # ValueArray
+    | BOOLEAN   # ValueBoolean
+    | STRING    # ValueString
+    | NUMBER    # ValueNumber
+    | DOUBLE    # ValueDouble
+    | 'null'    # ValueNull
     ;
 
 BOOLEAN

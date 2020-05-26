@@ -1,10 +1,18 @@
 grammar Info;
 
 init
-    : (NL* item)*
+    : title description? attribute*
     ;
 
-item
+title
+    : '---' Keyword
+    ;
+
+description
+    : '"""' Text '"""'
+    ;
+
+attribute
     : '-' key ':' value
     ;
 
@@ -17,15 +25,15 @@ value
     ;
 
 Keyword
-    : (~[ \\\b\f\t\r\n\-:] | EscapeSequence)+
+    : (~[ \\\b\f\t\r\n\-:"] | EscapeSequence)+
     ;
 
-NL
-    : '\r'? '\n'
+Text
+    : (~[\\\b\f\t"] | EscapeSequence)+
     ;
 
 WS
-    : [ \t] -> skip
+    : [ \t\r\n] -> channel(HIDDEN)
     ;
 
 fragment EscapeSequence
